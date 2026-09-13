@@ -9,3 +9,13 @@ namePrefix: dev-
 replicas:
   - name: gitops-demo
     count: 1
+patches:
+  - target:
+      kind: Deployment
+      name: gitops-demo
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/env/-
+        value:
+          name: FEATURE_MODE
+          value: experimental

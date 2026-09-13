@@ -15,6 +15,9 @@ spec:
       containers:
         - name: nginx
           image: nginx:1.27.5-alpine
+          env:
+            - name: BASE_RELEASE
+              value: "2"
           ports:
             - name: http
               containerPort: 80
