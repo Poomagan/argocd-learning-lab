@@ -6,6 +6,10 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
+  info:
+    - name: Learning stage
+      value: Declarative Application resources
+
   project: default
 
   source:
