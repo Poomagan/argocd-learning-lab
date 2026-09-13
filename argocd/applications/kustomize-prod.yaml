@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kustomize-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/Poomagan/argocd-learning-lab.git
+    targetRevision: main
+    path: apps/kustomize-demo/overlays/prod
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kustomize-prod
+
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
