@@ -13,6 +13,9 @@ spec:
     helm:
       valueFiles:
         - values-dev.yaml
+      parameters:
+        - name: replicaCount
+          value: "2"
 
   destination:
     server: https://kubernetes.default.svc
